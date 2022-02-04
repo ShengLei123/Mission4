@@ -13,14 +13,25 @@ namespace Mission4.Models
 
         }
         public DbSet<MovieResponse> Responses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                new Category { CategoryId=1, CategoryName= "Action/Adventure" },
+                new Category { CategoryId = 2, CategoryName = "Comedy" },
+                new Category { CategoryId = 3, CategoryName = "Drama" },
+                new Category { CategoryId = 4, CategoryName = "Family" },
+                new Category { CategoryId = 5, CategoryName = "Horror/Suspense" },
+                new Category { CategoryId = 6, CategoryName = "Miscellaneous" },
+                new Category { CategoryId = 7, CategoryName = "Television" },
+                new Category { CategoryId = 8, CategoryName = "VHS" }
+            );
             mb.Entity<MovieResponse>().HasData(
                 new MovieResponse
                 {
                     MovieID = 1,
-                    Category = "Action/Adventure",
+                    CategoryId = 1,
                     Title = "sasa sa",
                     Year = 2121,
                     Director = "dfds",
@@ -30,7 +41,7 @@ namespace Mission4.Models
                 new MovieResponse
                 {
                     MovieID = 2,
-                    Category = "Action/Adventure",
+                    CategoryId = 2,
                     Title = "sasawqw",
                     Year = 2433,
                     Director = "ewc edfw",
@@ -40,7 +51,7 @@ namespace Mission4.Models
                 new MovieResponse
                 {
                     MovieID = 3,
-                    Category = "Family",
+                    CategoryId = 3,
                     Title = "some some",
                     Year = 2011,
                     Director = "some one",
